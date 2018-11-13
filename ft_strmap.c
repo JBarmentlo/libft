@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 16:00:01 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 15:56:30 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/13 17:27:52 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/13 18:05:49 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+#include <stdlib.h>
+
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	int		len;
+	char	*out;
+	
+	if (s == NULL || f == NULL)
+		return NULL;
+	len = 0;
+	while (s[len])
+		len++;
+	if(!(out = (char*)malloc(len + 1)))
+		return (NULL);
+	out[len] = '\0';
+	len = 0;
+	while (s[len])
+	{
+		out[len] = f(s[len]);
+		len++;
+	}
+	return (out);
 }

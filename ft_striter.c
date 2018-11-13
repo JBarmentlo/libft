@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 16:00:01 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 15:56:30 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/13 16:39:20 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/13 16:44:23 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <string.h>
 
-int	ft_isprint(int c)
+void	ft_striter(char *str, void (*f)(char *))
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	if (str == NULL)
+		return ;
+	while (*str != '\0')
+	{
+		f(str);
+		str++;
+	}
 }

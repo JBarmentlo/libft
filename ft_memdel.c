@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 16:00:01 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 15:56:30 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/13 16:15:56 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/13 16:19:37 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <stdlib.h>
+#include <string.h>
+
+void	ft_memdel(void **ap)
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	if (ap == NULL)
+		return ;
+	if (*ap == NULL)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

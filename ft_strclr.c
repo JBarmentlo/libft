@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 16:00:01 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 15:56:30 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/13 16:36:32 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/13 16:44:54 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <string.h>
+
+void	ft_strclr(char *str)
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	int	i;
+	
+	if (str == NULL)
+		return ;
+	i = -1;
+	while (str[++i])
+		str[i] = '\0';
 }

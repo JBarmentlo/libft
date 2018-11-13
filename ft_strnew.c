@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 16:00:01 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 15:56:30 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/13 16:19:56 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/13 17:32:50 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <stdlib.h>
+#include "libft.h"
+
+char	*ft_strnew(size_t size)
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	char	*out;
+
+	out = ft_memalloc(size + 1);
+	return (out);
 }

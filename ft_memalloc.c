@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 16:00:01 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 15:56:30 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/13 16:03:24 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/13 16:15:45 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <stdlib.h>
+#include <string.h>
+
+void	*ft_memalloc(size_t size)
 {
-	if (c < 32 || c >= 127)
-		return (0);
-	return (1);
+	void			*out;
+	unsigned char	*suk;
+	size_t			i;
+
+	if (!(out = malloc(size)))
+		return (NULL);
+	i = 0;
+	suk = (unsigned char*)out;
+	while (i < size)
+	{
+		suk[i] = 0;
+		i++;
+	}
+	return (out);
 }
