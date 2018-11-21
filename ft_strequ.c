@@ -6,14 +6,14 @@
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 18:09:28 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 18:27:14 by jbarment         ###   ########.fr       */
+/*   Updated: 2018/11/14 16:39:44 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-int	is_equal_nocase(char c, char d)
+static int	is_equal_nocase(char c, char d)
 {
 	if (c == d)
 		return (1);
@@ -23,7 +23,7 @@ int	is_equal_nocase(char c, char d)
 	return (0);
 }
 
-int	ft_strequ(char const *s1, char const *s2)
+int		ft_strequ(char const *s1, char const *s2)
 {
 	int	i;
 

@@ -6,25 +6,25 @@
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 15:24:28 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/13 16:02:45 by jbarment         ###   ########.fr       */
+/*   Updated: 2018/11/14 17:00:35 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
+static int	ft_isspace(char c)
 {
 	if (c == 32 || (c >= 9 && c <= 13))
 		return (1);
 	return (0);
 }
 
-int	ft_isnum(char c)
+static int	ft_isnum(char c)
 {
 	if (c <= '9' && c >= '0')
 		return (1);
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	long	out;
 	int		i;
@@ -46,7 +46,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	out = out * sign;
-//	if (out < -2147483648 || out > 2147483647)
-//		return (0);
+	if (out < -2147483648 || out > 2147483647)
+		return (0);
 	return ((int)out);
 }

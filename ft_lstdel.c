@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 18:36:09 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/14 16:30:00 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/21 16:12:47 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/21 16:19:56 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	char	*out;
-	size_t	i;
-	size_t	j;
+	t_list	*next;
+	t_list	*iter;
 
-	i = 0;
-	j = 0;
-	if (s1 == NULL || s2 ==NULL)
-		return (NULL);
-	while (s1[i])
-		i++;
-	while (s2[j])
-		j++;
-	if (!(out = ft_strnew(i + j)))
-		return (NULL);
-	
-	ft_memcpy((void*)out, (void*)s1, i);
-	ft_memcpy((void*)(out + i), (void*)s2, j + 1);
-	return (out);
+	iter = *alst;
+	while (iter != NULL)
+	{
+		next = iter->next;
+		ft_lstdelone(&iter, del);
+		iter = next;
+	}
+	*alst = NULL;
 }

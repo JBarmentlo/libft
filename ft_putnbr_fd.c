@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 18:36:09 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/14 16:30:00 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/14 16:49:32 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/14 16:53:27 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static void	print(long n, int fd)
 {
-	char	*out;
-	size_t	i;
-	size_t	j;
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+		print(n, fd);
+	}
+	else if (n < 10)
+	{
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+	else if (n >= 10)
+	{
+		print(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+}
 
-	i = 0;
-	j = 0;
-	if (s1 == NULL || s2 ==NULL)
-		return (NULL);
-	while (s1[i])
-		i++;
-	while (s2[j])
-		j++;
-	if (!(out = ft_strnew(i + j)))
-		return (NULL);
-	
-	ft_memcpy((void*)out, (void*)s1, i);
-	ft_memcpy((void*)(out + i), (void*)s2, j + 1);
-	return (out);
+void	ft_putnbr_fd(int nb, int fd)
+{
+	long	n;
+
+	n = nb;
+	print(n, fd);
 }

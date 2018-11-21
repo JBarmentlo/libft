@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarment <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 18:36:09 by jbarment          #+#    #+#             */
-/*   Updated: 2018/11/14 16:30:00 by jbarment         ###   ########.fr       */
+/*   Created: 2018/11/21 16:20:03 by jbarment          #+#    #+#             */
+/*   Updated: 2018/11/21 16:23:37 by jbarment         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void 	ft_lstadd(t_list **alst, t_list *new)
 {
-	char	*out;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	if (s1 == NULL || s2 ==NULL)
-		return (NULL);
-	while (s1[i])
-		i++;
-	while (s2[j])
-		j++;
-	if (!(out = ft_strnew(i + j)))
-		return (NULL);
-	
-	ft_memcpy((void*)out, (void*)s1, i);
-	ft_memcpy((void*)(out + i), (void*)s2, j + 1);
-	return (out);
+	if (new == NULL)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }
